@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=400,target-densitydpi=high-dpi,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/App_Themes/主题1/mylove.jpg" />
+    <title>众享资源站--vip观看</title>
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!--css style-->
+    <style type="text/css">
+        .body{
+            background-image:url("/App_Themes/主题1/mylove.jpg");
+            background-size:auto;
+        }
+
+        /*关注*/
+        .guanzhu{
+            margin-right:30%;
+            font-size:25px;
+            color:#009933;
+            float:right;
+        }
+
+        .login_b {
+            /* position:relative; */
+            margin-left: 5%;
+        }
+
+        .login_s {
+            float: left;
+            margin-left: 35%;
+        }
+
+
+        .login_ul {
+            float: right;
+            width: 70%;
+            color: #ff9966;
+            font-size: 24px;
+        }
+
+        li {
+            display: inline;
+        }
+    </style>
+    <script type="text/javascript">
+        var text;//全局变量
+
+        function ping() {
+            var v = new RegExp();
+            var key = document.getElementById('k');
+            v.compile(/((http|ftp|https):\/\/)?[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])/);
+            if (!v.test(key.value)) {
+                alert("链接错误,重新输入");
+                return false;
+            }
+            else if (GetQueryString("jc") != "T") {
+                //alert("cuo");
+                window.location.href = "/众享资源站_login.html";
+            }
+            else
+                return true;
+        }
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        // 调用方法
+        //alert(GetQueryString("jc"));
+        function loginState() {
+            if (GetQueryString("jc") == "T") {
+                text = ""
+                return "状态：已登录";
+            }
+            else {
+                text = "登录"
+                return "状态：未登录";
+            }
+
+        }
+        $(function () {
+
+            // var tt=$("#login_state").innerHtml;
+            $("#login_state").append(loginState());
+            $("#login").append(text)
+
+           // alert(text);
+        })
+
+
+        window.onload = function () {
+            //check login?
+            document.onkeydown = function () {
+                var e = window.event || arguments[0];
+                if (e.keyCode == 123) {
+                    return false;
+                } else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+                    return false;
+                }
+            };
+            document.oncontextmenu = function () {
+                return false;
+            }
+        }
+
+        function jiexi() {
+            if (!ping()) return false;
+            else if (sousuo.url001.checked)
+                window.open("https://api.flvsp.com/?url=" + sousuo.key.value, "");
+            else if (sousuo.url002.checked)
+                window.open("http://jiexi.92fz.cn/player/vip.php?url=" + sousuo.key.value, "");
+            else if (sousuo.url003.checked)
+                window.open("http://vip.jlsprh.com/index.php?url=" + sousuo.key.value, "");
+            else if (sousuo.url100.checked)
+                window.open("http://aikan-tv.com/?url=" + sousuo.key.value, "");
+            else if (sousuo.url101.checked)
+                window.open("http://api.47ks.com/webcloud/?v=" + sousuo.key.value, "");//2
+            else if (sousuo.url110.checked)
+                window.open("http://api.nepian.com/ckparse/?url=" + sousuo.key.value, "");//2
+            else if (sousuo.url117.checked)
+                window.open("http://api.xfsub.com/index.php?url=" + sousuo.key.value, "");//2
+            else if (sousuo.url118.checked)
+                window.open("http://api.lequgirl.com/?url=" + sousuo.key.value, "");
+            return false;
+        }
+
+    </script>
+</head>
+<body class="body">
+    <form method="post" name="sousuo" id="sousuo" style="margin:0px; padding:0px" onsubmit="return(jiexi())">
+        <b>众享资源站--vip观看</b>：
+        <!--loginState-->
+        <ul class="login_ul">
+            <li><label class="login_s" id="login_state"></label></li>
+            <li><a class="login_b" id="login" href="/众享资源站_login.html"></a></li>
+
+        </ul>
+        <br />
+        <br />输入需要观看的视频地址↓↓↓
+        <br />
+
+        <input name="key" type="text" id="k" size="40" maxlength="200" value="" />
+        <input type="submit" value="&nbsp;播放&nbsp;" />
+
+        <a target="_blank" style="font-size:25px;color:#009933;" href="http://t.cn/RWZJFyX">
+            <br /> 点击观看vip教程 <br />温馨提示：请使用 ctrl+v 粘贴网址
+           
+
+            <br />如果解析失败,一个接口多刷新几次
+        </a>
+     
+
+        <br />
+        <br />
+        <input type="radio" name="ss" id="url001" checked="checked" />推荐
+        <br />
+        <br />
+        <input type="radio" name="ss" id="url002" />推荐
+      
+        <br />
+        <br />
+       
+        <input type="radio" name="ss" id="url003" />推荐
+        <br />
+        <!--求关注-->
+        <div class="guanzhu">
+            扫码关注微信公众号
+            <br />&nbsp; zxzyz66↓↓↓
+        </div>
+        <br />
+      
+       
+        <input type="radio" name="ss" id="url100" />推荐
+     
+        <br />
+       
+        <br />
+       
+      
+        <input type="radio" name="ss" id="url101" />1号
+        
+        
+        <br />
+        <!--二维码-->
+        <div style="margin-right:33%;float:right">
+            <br />
+            <img width="140" height="140" src="/App_Themes/jpg/zxzyz.jpg" />
+        </div>
+        <br />
+        <input type="radio" name="ss" id="url110" />2号
+
+        
+        <br />
+        <br />
+        <input type="radio" name="ss" id="url117" />3号
+        <br />
+        <br />
+        <input type="radio" name="ss" id="url118" />4号
+        <br />
+        <br />
+
+
+    </form>
+</body>
+</html>

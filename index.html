@@ -1,0 +1,110 @@
+<!DOCTYPE html> <html lang="en">
+<head> <meta charset="UTF-8">
+<title>爱老虎油#^_^#</title>
+</head>
+<body>
+<canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto;">
+</canvas>
+<div></div>
+</body>
+<script>
+    var _sto = setInterval;
+    window.setInterval = function(callback,timeout,param)
+    {
+        var args = Array.prototype.slice.call(arguments,2);
+        var _cb = function()
+        {
+            callback.apply(null,args);
+        }
+        _sto(_cb,timeout);
+    }
+    login();
+function login()
+{
+    var i=0;
+    var psw=prompt("先输入密码哦：");
+        if(psw=="娇娇")
+        {
+            window.onload = function ()
+            {
+                var canvas = document.getElementById("canvas");
+                var ctx = canvas.getContext('2d');
+                canvas.width = 600;
+                canvas.height = 600;
+                text(ctx,"Ch'an Rak Khun",0,50,"#FFE1FF");
+                text(ctx,"Ich liebe dich",330,50);
+                text(ctx,"Je t'aime",0,100,"#FFBBFF");
+                text(ctx,"Jeg elsker dig",330,100);
+                text(ctx,"IK hou van jou",0,150,"#FFAEB9");
+                text(ctx,"Volim te",330,150);
+                text(ctx,"saya Cinta Mu",0,200,"#FF8C69");
+                text(ctx,"bi chamd hairtai",330,200);
+                text(ctx,"Tora dost daram",0,250,"#FF8247");
+                text(ctx,"Me do wo",330,250);
+                text(ctx,"ja vas kokhaju",0,300,"#FF7256");
+                text(ctx,"Jag lskar dig",330,300);
+                text(ctx,"あいしてる",0,350,"#FF6347");
+                text(ctx,"사랑해",330,350);
+                word(ctx,"i",70,580);
+                word(ctx,"U",430,580);
+                setInterval(JumpHeart,1500,ctx);
+            }
+           
+        }
+else if(!psw) {history.go(-1);
+alert("为什么不输密码呢？");}
+else        
+ {
+alert("密码不对哦！");history.go(0);
+}
+    
+
+}
+    function text(ctx,str,x,y,color)
+    {
+        ctx.font="35px 楷体";
+        ctx.strokeStyle=color;
+        ctx.strokeText(str,x,y);
+    }
+    function word(ctx,str,x,y)
+    {
+        ctx.font="200px 楷体";
+        ctx.strokeStyle="red";
+        ctx.strokeText(str,x,y);
+    }
+     function JumpHeart(ctx)
+    {
+        drawHeart(ctx,275,450,42,30);
+        setTimeout(function(){ctx.clearRect(175,360,220,300);drawHeart(ctx,275,450,28,30);
+        },750);
+        // alert("aaa");
+    }
+    function drawHeart(ctx,x,y,R,rot)
+    {
+        ctx.save();
+        ctx.translate(x,y);
+      //  ctx.rotate(rot/180*Math.PI);
+        ctx.scale(R, R);
+        heartPath(ctx);
+        /*ctx.strokeStyle = "red"; ctx.lineWidth = "3px";*/
+        ctx.fillStyle = "red";
+        ctx.shadowColor = "gray";
+        ctx.shadowOffsetX = 5;
+        ctx.shadowOffsetY = 5;
+        ctx.shadowBlur = 5;
+        ctx.fill();
+        //ctx.stroke();
+        ctx.restore();
+     }
+    function heartPath(ctx)
+    {
+        ctx.beginPath();
+        ctx.arc(-1,0,1,Math.PI,0,false);
+        ctx.arc(1,0,1,Math.PI,0,false);
+    //貝塞尔曲线画心
+        ctx.bezierCurveTo(1.9, 1.2, 0.6, 1.6, 0, 3.0);
+        ctx.bezierCurveTo( -0.6, 1.6,-1.9, 1.2,-2,0);
+        ctx.closePath(); }
+
+</script>
+</html>
